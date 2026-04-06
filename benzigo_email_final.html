@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benzigo - Топливные карты с выгодой до 26%</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8fafc;
+            line-height: 1.6;
+        }
+        
+        .email-container {
+            max-width: 650px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            padding: 30px;
+            text-align: center;
+            border-bottom: 3px solid #3b82f6;
+        }
+        
+        .logo {
+            max-width: 220px;
+            height: auto;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            margin: 0 0 20px 0;
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .hero-section .subtitle {
+            font-size: 20px;
+            margin-bottom: 35px;
+            opacity: 0.95;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 25px 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .stat-number {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.95;
+        }
+        
+        .content {
+            padding: 50px 30px;
+            background: #ffffff;
+        }
+        
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .benefit-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 5px solid #3b82f6;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 16px rgba(59, 130, 246, 0.2);
+        }
+        
+        .benefit-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .benefit-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 0;
+        }
+        
+        .benefit-text {
+            color: #475569;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        
+        .highlight {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        
+        .pricing-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+            padding: 50px 30px;
+        }
+        
+        .pricing-intro {
+            text-align: center;
+            color: #64748b;
+            margin: -10px 0 40px 0;
+            font-size: 16px;
+        }
+        
+        .pricing-table-wrapper {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+        }
+        
+        .table-header {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            padding: 20px;
+            font-size: 20px;
+            font-weight: 700;
+            text-align: center;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th {
+            background: #f1f5f9;
+            padding: 15px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14px;
+            color: #334155;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        td {
+            padding: 18px 15px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 15px;
+            color: #334155;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tbody tr {
+            transition: background 0.2s;
+        }
+        
+        tbody tr:hover {
+            background: #eff6ff;
+        }
+        
+        .brand-cell {
+            font-weight: 700;
+            color: #1e293b;
+            font-size: 16px;
+        }
+        
+        .discount-cell {
+            color: #3b82f6;
+            font-weight: 700;
+        }
+        
+        .price-before {
+            color: #94a3b8;
+            text-decoration: line-through;
+            font-size: 14px;
+        }
+        
+        .price-after {
+            color: #10b981;
+            font-weight: 700;
+            font-size: 18px;
+            display: block;
+            margin-top: 3px;
+        }
+        
+        .savings-badge {
+            display: inline-block;
+            background: #d1fae5;
+            color: #065f46;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            margin: 0 0 15px 0;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        
+        .cta-section .subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 35px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 18px 45px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 18px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+        }
+        
+        .cta-button:hover {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(16, 185, 129, 0.5);
+        }
+        
+        .contact-section {
+            background: white;
+            padding: 50px 30px;
+            text-align: center;
+        }
+        
+        .contact-section h2 {
+            margin: 0 0 15px 0;
+            font-size: 28px;
+            color: #1e293b;
+            font-weight: 700;
+        }
+        
+        .contact-subtitle {
+            color: #64748b;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-phone {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+        
+        .btn-email {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+        }
+        
+        .btn-form {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+        }
+        
+        .footer {
+            background: #1e293b;
+            color: #94a3b8;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .footer-contacts {
+            margin: 20px 0;
+            font-size: 15px;
+        }
+        
+        .footer-contacts a {
+            color: #3b82f6;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-contacts a:hover {
+            color: #60a5fa;
+        }
+        
+        .footer-links {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid #334155;
+        }
+        
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 13px;
+        }
+        
+        .footer-links a:hover {
+            color: #3b82f6;
+        }
+        
+        @media only screen and (max-width: 600px) {
+            .hero-section h1 {
+                font-size: 28px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .stat-number {
+                font-size: 36px;
+            }
+            
+            .content {
+                padding: 40px 20px;
+            }
+            
+            .benefit-card {
+                padding: 20px;
+            }
+            
+            .benefit-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .benefit-icon {
+                margin: 0 0 15px 0;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+            }
+            
+            .contact-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            th, td {
+                font-size: 13px;
+                padding: 12px 10px;
+            }
+            
+            .price-after {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header with Logo -->
+        <div class="header">
+            <!-- ИНСТРУКЦИЯ: Замените src на прямую ссылку на ваш логотип -->
+            <!-- Загрузите логотип на сервер: например, https://benzigo.ru/images/logo.png -->
+            <img src="https://benzigo.ru/images/logo.png" alt="Benzigo" class="logo" />
+        </div>
+        
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1>Экономьте до 10 000₽ на каждой машине ежемесячно</h1>
+            <div class="subtitle">Топливные карты Benzigo — выгода с первой заправки</div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">26%</span>
+                    <span class="stat-label">максимальная<br>скидка</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">5000+</span>
+                    <span class="stat-label">АЗС по всей<br>России</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">1 день</span>
+                    <span class="stat-label">быстрый<br>запуск</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Benefits Section -->
+        <div class="content">
+            <h2 class="section-title">Почему выбирают Benzigo?</h2>
+            
+            <div class="benefits-grid">
+                <!-- Benefit 1 -->
+                <div class="benefit-card">
+                    <div class="benefit-header">
+                        <div class="benefit-icon">💰</div>
+                        <h3 class="benefit-title">Мгновенная экономия</h3>
+                    </div>
+                    <p class="benefit-text">
+                        Скидка <span class="highlight">до 26%</span> действует с первой заправки. Никаких накопительных периодов, сложных бонусных программ или скрытых условий. Экономия начинается сразу.
+                    </p>
+                </div>
+                
+                <!-- Benefit 2 -->
+                <div class="benefit-card">
+                    <div class="benefit-header">
+                        <div class="benefit-icon">🗺️</div>
+                        <h3 class="benefit-title">Масштабное покрытие</h3>
+                    </div>
+                    <p class="benefit-text">
+                        <span class="highlight">5 000+ АЗС-партнёров</span> по всей России. Заправки доступны на всех федеральных трассах и в крупных городах страны. Ваш автопарк обеспечен топливом в любом регионе.
+                    </p>
+                </div>
+                
+                <!-- Benefit 3 -->
+                <div class="benefit-card">
+                    <div class="benefit-header">
+                        <div class="benefit-icon">🔐</div>
+                        <h3 class="benefit-title">Полный контроль расходов</h3>
+                    </div>
+                    <p class="benefit-text">
+                        <span class="highlight">Гибкая настройка лимитов:</span> суточные и общие ограничения. Выбор разрешённых видов топлива и конкретных АЗС для каждой карты. Защита PIN-кодом, мгновенная блокировка через личный кабинет.
+                    </p>
+                </div>
+                
+                <!-- Benefit 4 -->
+                <div class="benefit-card">
+                    <div class="benefit-header">
+                        <div class="benefit-icon">📈</div>
+                        <h3 class="benefit-title">Прозрачная отчётность</h3>
+                    </div>
+                    <p class="benefit-text">
+                        <span class="highlight">Ежедневные детальные отчёты:</span> где, когда, сколько литров и по какой цене. Автоматические документы: счета, акты и закрывающие документы за любой период. Интеграция с 1С и ERP-системами.
+                    </p>
+                </div>
+                
+                <!-- Benefit 5 -->
+                <div class="benefit-card">
+                    <div class="benefit-header">
+                        <div class="benefit-icon">⚡</div>
+                        <h3 class="benefit-title">Быстрый запуск</h3>
+                    </div>
+                    <p class="benefit-text">
+                        <span class="highlight">Запуск за 1 день:</span> договор, счёт и карты готовы за один рабочий день. Начните экономить уже завтра. Персональный менеджер на связи 24/7. Ответ на запрос — за 15 минут.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pricing Section -->
+        <div class="pricing-section">
+            <h2 class="section-title">Актуальные цены — экономия очевидна</h2>
+            <p class="pricing-intro">
+                Сравните наши цены с ценами на стелле — разница впечатляет!
+            </p>
+            
+            <!-- Clients without VAT -->
+            <div class="pricing-table-wrapper">
+                <div class="table-header">Для клиентов без НДС</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Бренд</th>
+                            <th>Скидка</th>
+                            <th>Цена стеллы</th>
+                            <th>Цена со скидкой</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="brand-cell">ТН</td>
+                            <td class="discount-cell">до 21% ДТ (Межсезон)<br>до 16% ДТ (Танеко)</td>
+                            <td>
+                                <span class="price-before">73 руб</span>
+                                <span class="price-before" style="display: block;">76 руб</span>
+                            </td>
+                            <td>
+                                <span class="price-after">58 руб</span>
+                                <span class="savings-badge">экономия −15 руб</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="brand-cell">ТН (Казань)</td>
+                            <td class="discount-cell">до 26% ДТ (Межсезон)</td>
+                            <td>
+                                <span class="price-before">70 руб</span>
+                            </td>
+                            <td>
+                                <span class="price-after">52 руб</span>
+                                <span class="savings-badge">экономия −18 руб</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="brand-cell">ГПН</td>
+                            <td class="discount-cell">до 20%</td>
+                            <td>
+                                <span class="price-before">77 руб</span>
+                            </td>
+                            <td>
+                                <span class="price-after">62 руб</span>
+                                <span class="savings-badge">экономия −15 руб</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="brand-cell">РН</td>
+                            <td class="discount-cell">до 12%</td>
+                            <td>
+                                <span class="price-before">75 руб</span>
+                            </td>
+                            <td>
+                                <span class="price-after">66 руб</span>
+                                <span class="savings-badge">экономия −9 руб</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="brand-cell">ЛУК</td>
+                            <td class="discount-cell">до 6%</td>
+                            <td>
+                                <span class="price-before">77 руб</span>
+                            </td>
+                            <td>
+                                <span class="price-after">72 руб</span>
+                                <span class="savings-badge">экономия −5 руб</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Clients with VAT -->
+            <div class="pricing-table-wrapper">
+                <div class="table-header">Для клиентов с НДС</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Бренд</th>
+                            <th>Скидка</th>
+                            <th>Цена стеллы</th>
+                            <th>Цена со скидкой</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="brand-cell">ТН</td>
+                            <td class="discount-cell">до 11% ДТ (Межсезон)<br>до 8% ДТ (Танеко)</td>
+                            <td>
+                                <span class="price-before">73 руб</span>
+                                <span class="price-before" style="display: block;">76 руб</span>
+                            </td>
+                            <td>
+                                <span class="price-after">65 руб</span>
+                                <span class="savings-badge">экономия −8 руб</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="brand-cell">ТН (Казань)</td>
+                            <td class="discount-cell">до 19% ДТ (Межсезон)</td>
+                            <td>
+                                <span class="price-before">70 руб</span>
+                            </td>
+                            <td>
+                                <span class="price-after">55 руб</span>
+                                <span class="savings-badge">экономия −15 руб</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="brand-cell">ГПН</td>
+                            <td class="discount-cell">до 11%</td>
+                            <td>
+                                <span class="price-before">77 руб</span>
+                            </td>
+                            <td>
+                                <span class="price-after">69 руб</span>
+                                <span class="savings-badge">экономия −8 руб</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="brand-cell">РН</td>
+                            <td class="discount-cell">до 8%</td>
+                            <td>
+                                <span class="price-before">75 руб</span>
+                            </td>
+                            <td>
+                                <span class="price-after">69 руб</span>
+                                <span class="savings-badge">экономия −6 руб</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="brand-cell">ЛУК</td>
+                            <td class="discount-cell">наценка 2%</td>
+                            <td>
+                                <span class="price-before">77 руб</span>
+                            </td>
+                            <td>
+                                <span class="price-after">79 руб</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Готовы начать экономить?</h2>
+            <p class="subtitle">Оставьте заявку, и наш менеджер свяжется с вами в течение 15 минут</p>
+            <a href="https://benzigo.ru/#contacts?utm_source=email&utm_medium=commercial&utm_campaign=spring2025&utm_content=cta_button&manager=kuhar" class="cta-button">Оформить заявку прямо сейчас</a>
+        </div>
+        
+        <!-- Contact Section -->
+        <div class="contact-section">
+            <h2>Есть вопросы? Мы на связи!</h2>
+            <p class="contact-subtitle">Выберите удобный способ связи</p>
+            
+            <div class="contact-buttons">
+                <a href="tel:+79668307057" class="contact-btn btn-phone">
+                    <span>📞</span>
+                    <span>Позвонить сейчас</span>
+                </a>
+                <a href="mailto:r.kuhar@benzigo.ru?subject=Заявка с email-рассылки (Кухарь)&body=Здравствуйте! Интересует подключение топливных карт Benzigo." class="contact-btn btn-email">
+                    <span>✉️</span>
+                    <span>Написать Email</span>
+                </a>
+                <a href="https://benzigo.ru/#contacts?utm_source=email&utm_medium=commercial&utm_campaign=spring2025&utm_content=contact_button&manager=kuhar" class="contact-btn btn-form">
+                    <span>📝</span>
+                    <span>Оформить заявку</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-logo">BENZIGO</div>
+            <p style="margin-bottom: 20px; font-size: 16px;">Топливные карты для вашего бизнеса</p>
+            
+            <div class="footer-contacts">
+                <p>📞 <a href="tel:+79668307057">+7 (966) 830-70-57</a></p>
+                <p>✉️ <a href="mailto:r.kuhar@benzigo.ru">r.kuhar@benzigo.ru</a></p>
+                <p>🌐 <a href="https://benzigo.ru?utm_source=email&utm_medium=commercial&utm_campaign=spring2025&manager=kuhar">benzigo.ru</a></p>
+            </div>
+            
+            <div class="footer-links">
+                <p style="font-size: 12px; color: #64748b; margin-bottom: 10px;">
+                    Вы получили это письмо, так как выразили интерес к услугам Benzigo
+                </p>
+                <a href="#">Отписаться от рассылки</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
